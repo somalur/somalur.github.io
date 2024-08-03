@@ -1,12 +1,12 @@
 # Software Engineer
 
-## Skills: PHP, Python, MySQL, JavaScript, Amazon Web Services, New Relic,Optimizely, Tableau, C, Java, Agile, Jira
+#### Skills: PHP, Python, MySQL, JavaScript, Amazon Web Services, New Relic,Optimizely, Tableau, C, Java, Agile, Jira
 
 
 
-### Work Experience
+## Work Experience
 
-Tribute Technology
+### Tribute Technology (_September 2020 - Present_)
 - Co-Developed a web application using the Laravel Framework that scrapes data from our clients old website to our systems during the onboarding process.
 - Worked on integrating new services, API, and features to our main web application to help enhance our customer's experience.
 - Worked as a Sustaining Engineer in rotations to help maintain and address customer-related issues.
@@ -15,11 +15,11 @@ Tribute Technology
 - Worked on AB Test Development on our e-commerce store to determine features that could help increase revenue and value for the organization.
 - Managed and worked on building a CI/CD pipeline using GitHub Actions.
 
-CodePlex Technology Services
+### CodePlex Technology Services (_June 2019 - June 2019_)
 - Worked on writing importers to programmatically navigate clients old websites and import obituary content-related data using web scraping technology(HTML DOM parser) when customers are boarded on to the CFS's platform.
 
 
-Mindzen Inc
+### Mindzen Inc (December 2018 - December 2018_)
 - Helped develop an AI enabled chatbot for Mindzen for a Proof of Concept idea. It was made using Google's Dialogflow platform.
 
 ### Education
