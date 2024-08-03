@@ -1,23 +1,10 @@
 # Software Engineer
 
-## Skills
- 
-- PHP
-- Python
-- MySQL
-- JavaScript
-- Amazon Web Services
-- New Relic
-- Optimizely
-- Tableau
-- C
-- Java
-- Agile
-- Jira
+## Skills: PHP, Python, MySQL, JavaScript, Amazon Web Services, New Relic,Optimizely, Tableau, C, Java, Agile, Jira
 
 
 
-## Work Experience
+### Work Experience
 
 Tribute Technology
 - Co-Developed a web application using the Laravel Framework that scrapes data from our clients old website to our systems during the onboarding process.
@@ -35,15 +22,16 @@ CodePlex Technology Services
 Mindzen Inc
 - Helped develop an AI enabled chatbot for Mindzen for a Proof of Concept idea. It was made using Google's Dialogflow platform.
 
-## Education
+### Education
 
-- Masters in Computer Science ( Georgia Institute of Technology )
-- Bachelors of Technology ( SRM Institute of Science and Technology )
-- High School ( Delhi Public School - Bangalore East )
-- Middle School ( Delhi Public School - Bangalore East )
+- Masters in Computer Science | Georgia Institute of Technology (_September 2023_)								       		
+- Bachelors of Technology	| SRM Institute of Science and Technology (_June 2016 - May 2020_)	 			        		
+- High School | Delhi Public School - Bangalore East (_June 2015 - May 2016_)
+- Middle School | Delhi Public School - Bangalore East (_June 2013 - May 2014_)
 
 
-## Projects
+
+### Projects
 
 -  Housing Market Analysis (Affordability and Economic Impact) in the United States
 -  Advanced Traffic Management Using Machine Learning
