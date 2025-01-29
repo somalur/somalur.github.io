@@ -1,6 +1,6 @@
 # Senior Software Engineer
 
-#### Skills: PHP, Python, MySQL, JavaScript, Amazon Web Services, New Relic,Optimizely, Tableau, C, Java, Agile, Jira
+#### Skills: PHP, Python, MySQL, JavaScript, Amazon Web Services, New Relic,Optimizely, Tableau, C, Java, Agile, Jira, CodeIgniter, Laravel, Ansible, Github Actions, SVN 
 
 
 
@@ -14,13 +14,32 @@
 - Worked and designed a tool to facilitate the migration of data from our legacy environment to an environment on AWS.
 - Worked on AB Test Development on our e-commerce store to determine features that could help increase revenue and value for the organization.
 - Managed and worked on building a CI/CD pipeline using GitHub Actions.
+- Built a front-end service to create and update routing parameters for our website routing system.
+- Developed and launched a Shopify store in collaboration with external partners to distribute edible sympathy gifts, providing compassionate support to grieving families and driving e-commerce growth.
+- Responsible for the end-to-end software release process for the company’s web platform, coordinating cross-functional teams to
+ensure seamless and timely deployments
+- Accelerated development for two internal teams, ensuring timely achievement of quarterly KPIs by implementing streamlined
+processes and cross-functional collaboration.
 
 ### CodePlex Technology Services (_June 2019 - June 2019_)
 - Worked on writing importers to programmatically navigate clients old websites and import obituary content-related data using web scraping technology(HTML DOM parser) when customers are boarded on to the CFS's platform.
 
 
-### Mindzen Inc (December 2018 - December 2018_)
+### Mindzen Inc (_December 2018 - December 2018_)
 - Helped develop an AI enabled chatbot for Mindzen for a Proof of Concept idea. It was made using Google's Dialogflow platform.
+
+### Projects
+
+-  Automated Agent to Solve Ravens Progressive Matrices
+-  Automated Stock Pricing Predictor (05/2024 - 07/2024)
+-  Housing Market Analysis (Affordability and Economic Impact) in the United States
+-  Advanced Traffic Management Using Machine Learning
+-  Prediction Of Stay in Hospitals
+-  The Lone Traveller
+
+### Achievements
+= Tribute Technology Innovator Award
+
 
 ### Education
 
@@ -31,9 +50,4 @@
 
 
 
-### Projects
 
--  Housing Market Analysis (Affordability and Economic Impact) in the United States
--  Advanced Traffic Management Using Machine Learning
--  Prediction Of Stay in Hospitals
--  The Lone Traveller
