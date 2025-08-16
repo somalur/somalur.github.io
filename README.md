@@ -1,6 +1,6 @@
 # Senior Software Engineer
 
-#### Skills: PHP, Python, MySQL, JavaScript, Amazon Web Services, New Relic,Optimizely, Tableau, C, Java, Agile, Jira, CodeIgniter, Laravel, Ansible, Github Actions, SVN 
+#### Skills: PHP, Python, MySQL, JavaScript, Amazon Web Services, New Relic, Optimizely, Tableau, C, Java, Agile, Jira, CodeIgniter, Laravel, Ansible, Github Actions, SVN, AB Testing, Stripe API Integration 
 
 
 
@@ -20,6 +20,7 @@
 ensure seamless and timely deployments
 - Accelerated development for two internal teams, ensuring timely achievement of quarterly KPIs by implementing streamlined
 processes and cross-functional collaboration.
+
 
 ### CodePlex Technology Services (_June 2019 - June 2019_)
 - Worked on writing importers to programmatically navigate clients old websites and import obituary content-related data using web scraping technology(HTML DOM parser) when customers are boarded on to the CFS's platform.
