@@ -20,6 +20,7 @@
 ensure seamless and timely deployments
 - Accelerated development for two internal teams, ensuring timely achievement of quarterly KPIs by implementing streamlined
 processes and cross-functional collaboration.
+- Test
 
 
 ### CodePlex Technology Services (_June 2019 - June 2019_)
