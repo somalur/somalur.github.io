@@ -260,6 +260,39 @@
   }
 }
 
+@media (max-width: 720px) {
+  .container {
+    padding: var(--space-3);
+  }
+
+  .siteHeader .container {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+
+  .brandTitle {
+    font-size: 16px;
+  }
+
+  .siteNav {
+    width: 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+
+  .siteNav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .navLink {
+    white-space: nowrap;
+  }
+}
+
 @media print {
   .siteHeader {
     position: static;

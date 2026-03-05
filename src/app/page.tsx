@@ -231,7 +231,7 @@ export default function Home() {
             <article className={styles.card} role="listitem">
               <div className={styles.cardTop}>
                 <div>
-                  <h3 className={styles.cardTitle}>Rao's Infosoft Join </h3>
+                  <h3 className={styles.cardTitle}>Rao&apos;s Infosoft Join</h3>
                   <div className={styles.cardSubtitle}>
                     July 2018 - July 2018
                   </div>
