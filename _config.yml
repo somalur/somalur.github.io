@@ -1,6 +1,0 @@
-title: Sumeet Omalur
-logo: /assets/Sumeet-Icon.jpeg
-
-remote_theme: pages-themes/minimal@v0.2.0
-plugins:
-- jekyll-remote-theme
