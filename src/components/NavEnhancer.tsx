@@ -29,10 +29,11 @@ export default function NavEnhancer() {
 
     const setActive = (id: string) => {
       clearActive();
-      const a = navLinks.find((x) => x.getAttribute("data-nav") === id);
-      if (!a) return;
-      a.setAttribute("data-active", "true");
-      a.setAttribute("aria-current", "location");
+      const matches = navLinks.filter((x) => x.getAttribute("data-nav") === id);
+      for (const a of matches) {
+        a.setAttribute("data-active", "true");
+        a.setAttribute("aria-current", "location");
+      }
     };
 
     const listeners = navLinks.map((a) => {

@@ -18,34 +18,40 @@ export default function Home() {
             <span className={styles.brandTitle}>Sumeet Omalur</span>
           </div>
 
+          <nav className={`${styles.siteNav} ${styles.siteNavDesktop}`} aria-label="Primary">
+            <a className={styles.navLink} href="#skills" data-nav="skills">
+              Skills
+            </a>
+            <a className={styles.navLink} href="#experience" data-nav="experience">
+              Experience
+            </a>
+            <a className={styles.navLink} href="#projects" data-nav="projects">
+              Projects
+            </a>
+            <a className={styles.navLink} href="#achievements" data-nav="achievements">
+              Achievements
+            </a>
+            <a className={styles.navLink} href="#education" data-nav="education">
+              Education
+            </a>
+          </nav>
+
           <details className={styles.navDetails}>
             <summary className={styles.navSummary}>Menu</summary>
             <nav className={styles.siteNav} aria-label="Primary">
               <a className={styles.navLink} href="#skills" data-nav="skills">
                 Skills
               </a>
-              <a
-                className={styles.navLink}
-                href="#experience"
-                data-nav="experience"
-              >
+              <a className={styles.navLink} href="#experience" data-nav="experience">
                 Experience
               </a>
               <a className={styles.navLink} href="#projects" data-nav="projects">
                 Projects
               </a>
-              <a
-                className={styles.navLink}
-                href="#achievements"
-                data-nav="achievements"
-              >
+              <a className={styles.navLink} href="#achievements" data-nav="achievements">
                 Achievements
               </a>
-              <a
-                className={styles.navLink}
-                href="#education"
-                data-nav="education"
-              >
+              <a className={styles.navLink} href="#education" data-nav="education">
                 Education
               </a>
             </nav>
