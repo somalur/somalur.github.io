@@ -44,6 +44,11 @@ export default function NavEnhancer() {
         const target = document.getElementById(id);
         if (!target) return;
 
+        const details = a.closest("details");
+        if (details && details.hasAttribute("open")) {
+          details.removeAttribute("open");
+        }
+
         if (prefersReducedMotion()) return;
 
         e.preventDefault();
