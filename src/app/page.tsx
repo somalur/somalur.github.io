@@ -330,8 +330,7 @@ export default function Home() {
                 The Lone Traveller
               </h3>
               <div className={styles.cardSubtitle}>
-                Prediction of Length of Stay in Hospitals is a machine learning program that is used to determine the patients length of stay in a hospital based on the symptoms of a patient and the existing patients in various hospitals. It uses various machine learning algorithms like regression and
-                decision trees.
+                The Lone Traveller is a travel website that provides information about various cities in India in a dynamic and transitional manner. It also uses HTML and CSS for the structure and styling of the login page and PHP is incorporated for Database Connection and Login Validation.
               </div>
             </article>
           </div>
