@@ -88,6 +88,7 @@ export default function Home() {
                 <span className={styles.tag}>PyTorch</span>
                 <span className={styles.tag}>Vue.js</span>
                 <span className={styles.tag}>Next.js</span>
+                <span className={styles.tag}>Ruby on Rails</span>
               </div>
             </div>
             <div className={styles.skillGroup}>
