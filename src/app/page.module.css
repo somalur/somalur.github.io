@@ -251,6 +251,8 @@ details.navDetails:not([open]) > nav {
 .cardSubtitle {
   color: var(--muted);
   font-size: 13px;
+  margin-top: 10px !important;
+
 }
 
 .bullets {

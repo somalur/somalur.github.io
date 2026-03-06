@@ -266,34 +266,63 @@ export default function Home() {
 
             <article className={styles.card}>
               <h3 className={styles.cardTitle}>
-                Melanoma Prediction Model Analysis Using DenseNet
+                Melanoma Prediction Model Analysis Using DenseNet and CoATNet-3
               </h3>
+              <div className={styles.cardSubtitle}>
+                This project implements a deep-learning pipeline for automated melanoma detection on the SIIM-ISIC skin lesion dataset. It leverages a pretrained CoAtNet-3 and DenseNet backbone augmented with patient metadata (age, sex, and anatomical site) and employs focal loss to address class imbalance. This analysis helped determine which model was more suitable to process and identify key features for a positive case of melanoma
+              </div>
             </article>
             <article className={styles.card}>
               <h3 className={styles.cardTitle}>
                 Automated Agent to Solve Ravens Progressive Matrices
               </h3>
+                <div className={styles.cardSubtitle}>
+                  The Automated Agent was developed using Pillow and OpenCV to process and perform operations on the images from the Ravens Progressive Matrices to identify the relationship between the input images to generate the output image that the agent should select from a given set of
+                  potential answer.
+                </div>
             </article>
             <article className={styles.card}>
-              <h3 className={styles.cardTitle}>Automated Stock Pricing Predictor</h3>
-              <div className={styles.cardSubtitle}>05/2024 - 07/2024</div>
-            </article>
-            <article className={styles.card}>
-              <h3 className={styles.cardTitle}>Housing Market Analysis</h3>
+              <h3 className={styles.cardTitle}>
+                Automated Stock Pricing Predictor
+              </h3>
               <div className={styles.cardSubtitle}>
-                Affordability and Economic Impact (US)
+                Prediction of Length of Stay in Hospitals is a machine learning program that is used to determine the patients length of stay in a hospital based on the symptoms of a patient and the existing patients in various hospitals. It uses various machine learning algorithms like regression and
+                decision trees.
+              </div>
+            </article>
+            <article className={styles.card}>
+              <h3 className={styles.cardTitle}>
+                Housing Market Analysis
+              </h3>
+              <div className={styles.cardSubtitle}>
+                The Housing Market Analysis in the United States utilizes post-processed data from Zillow and Red Fin with an ARIMA model to predict the Affordability and Economic Conditions of the housing market for ZIP codes across the United States.
               </div>
             </article>
             <article className={styles.card}>
               <h3 className={styles.cardTitle}>
                 Advanced Traffic Management Using Machine Learning
               </h3>
+              <div className={styles.cardSubtitle}>
+                Advanced Traffic Management is a project that uses ARIMA and Linear Regression to predict a 7 Day Average Traffic Density on a Auckland Traffic Dataset.
+              </div>
             </article>
             <article className={styles.card}>
-              <h3 className={styles.cardTitle}>Prediction Of Stay in Hospitals</h3>
+              <h3 className={styles.cardTitle}>
+                Prediction Of Stay in Hospitals
+              </h3>
+              <div className={styles.cardSubtitle}>
+                Prediction of Length of Stay in Hospitals is a machine learning program that is used to determine the patients length of stay in a hospital based on the symptoms of a patient and the existing patients in various hospitals. It uses various machine learning algorithms like regression and
+                decision trees.
+              </div>
             </article>
             <article className={styles.card}>
-              <h3 className={styles.cardTitle}>The Lone Traveller</h3>
+              <h3 className={styles.cardTitle}>
+                The Lone Traveller
+              </h3>
+              <div className={styles.cardSubtitle}>
+                Prediction of Length of Stay in Hospitals is a machine learning program that is used to determine the patients length of stay in a hospital based on the symptoms of a patient and the existing patients in various hospitals. It uses various machine learning algorithms like regression and
+                decision trees.
+              </div>
             </article>
           </div>
         </section>
