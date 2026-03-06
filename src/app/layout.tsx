@@ -17,11 +17,11 @@ const body = IBM_Plex_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Senior Software Engineer | Resume",
+  title: "Sumeet's Resume | SDE-III",
   description:
     "Full-stack engineer focused on Web Development using PHP, Laravel and AWS, Machine Learning Algorithms with experience in onboarding automation, e-commerce experimentation, CI/CD, and reliable releases.",
   icons: {
-    icon: "/favicon.svg",
+    icon: "/code.svg",
   },
 };
 

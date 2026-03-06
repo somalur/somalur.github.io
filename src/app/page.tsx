@@ -80,7 +80,7 @@ export default function Home() {
             <div className={styles.skillGroup}>
               <h3>Backend</h3>
               <div className={styles.tags}>
-                <span className={styles.tag}>PHP</span>
+                <span className={styles.tag}>LAMP Stack</span>
                 <span className={styles.tag}>Laravel</span>
                 <span className={styles.tag}>CodeIgniter</span>
                 <span className={styles.tag}>Node.js</span>
@@ -93,6 +93,7 @@ export default function Home() {
             <div className={styles.skillGroup}>
               <h3>Languages</h3>
               <div className={styles.tags}>
+                <span className={styles.tag}>PHP</span>
                 <span className={styles.tag}>Python</span>
                 <span className={styles.tag}>JavaScript</span>
                 <span className={styles.tag}>C</span>
@@ -122,11 +123,15 @@ export default function Home() {
             <div className={styles.skillGroup}>
               <h3>Product / Observability</h3>
               <div className={styles.tags}>
+                <span className={styles.tag}>DataDog</span>
                 <span className={styles.tag}>New Relic</span>
                 <span className={styles.tag}>Optimizely</span>
                 <span className={styles.tag}>A/B Testing</span>
                 <span className={styles.tag}>Stripe API Integration</span>
                 <span className={styles.tag}>Open AI API Integration</span>
+                <span className={styles.tag}>Anaconda Navigator</span>
+                <span className={styles.tag}>Jupyter Notebooks</span>
+                <span className={styles.tag}>AWS CloudWatch</span>
               </div>
             </div>
             <div className={styles.skillGroup}>
@@ -204,6 +209,11 @@ export default function Home() {
                   Accelerated development for two internal teams, ensuring
                   timely achievement of quarterly KPIs by implementing
                   streamlined processes and cross-functional collaboration.
+                </li>
+                <li>
+                  Guided our offshore teams to help migrate data from our legacy platforms to our new consolidated obituary platform, 
+                  ensuring a timely achievement in providing customers with a better experience on our platform while improving the sites performance 
+                  and simplifying the process of adding new changes to the obituary platform.
                 </li>
               </ul>
             </article>
@@ -364,7 +374,7 @@ export default function Home() {
       <footer className={styles.siteFooter}>
         <div className={styles.container}>
           <small>
-            Last updated: <span id="last-updated">March 5th 2026</span>
+            Last updated: <span id="last-updated">March 6th 2026</span>
           </small>
         </div>
       </footer>
