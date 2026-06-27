@@ -153,9 +153,20 @@ export default function Home() {
             <article className={styles.card} role="listitem">
               <div className={styles.cardTop}>
                 <div>
+                  <h3 className={styles.cardTitle}>Block + Tackle</h3>
+                  <div className={styles.cardSubtitle}>
+                    June 2026 - Present
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article className={styles.card} role="listitem">
+              <div className={styles.cardTop}>
+                <div>
                   <h3 className={styles.cardTitle}>Tribute Technology</h3>
                   <div className={styles.cardSubtitle}>
-                    September 2020 - Present
+                    September 2020 - June 2026
                   </div>
                 </div>
               </div>
@@ -374,7 +385,7 @@ export default function Home() {
       <footer className={styles.siteFooter}>
         <div className={styles.container}>
           <small>
-            Last updated: <span id="last-updated">March 6th 2026</span>
+            Last updated: <span id="last-updated">June 27th 2026</span>
           </small>
         </div>
       </footer>
