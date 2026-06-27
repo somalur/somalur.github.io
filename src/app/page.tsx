@@ -155,7 +155,7 @@ export default function Home() {
                 <div>
                   <h3 className={styles.cardTitle}>Block + Tackle</h3>
                   <div className={styles.cardSubtitle}>
-                    June 2026 - Present
+                    July 2026 - Present
                   </div>
                 </div>
               </div>
