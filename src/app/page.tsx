@@ -308,8 +308,7 @@ export default function Home() {
                 Automated Stock Pricing Predictor
               </h3>
               <div className={styles.cardSubtitle}>
-                Prediction of Length of Stay in Hospitals is a machine learning program that is used to determine the patients length of stay in a hospital based on the symptoms of a patient and the existing patients in various hospitals. It uses various machine learning algorithms like regression and
-                decision trees.
+                The Automated Stock Pricing Predictor is a machine learning program that uses historical stock data to predict the future stock prices of a given stock. It uses various machine learning algorithms like regression and reinforcement learning techniques like Q-Learning to predict the future stock prices from a given stock ticker from a Nasdaq dataset.
               </div>
             </article>
             <article className={styles.card}>
