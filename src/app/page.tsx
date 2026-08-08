@@ -384,7 +384,7 @@ export default function Home() {
       <footer className={styles.siteFooter}>
         <div className={styles.container}>
           <small>
-            Last updated: <span id="last-updated">June 27th 2026</span>
+            Last updated: <span id="last-updated">August 8th 2026</span>
           </small>
         </div>
       </footer>
