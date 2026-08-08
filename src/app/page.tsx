@@ -361,8 +361,8 @@ export default function Home() {
           <div className={styles.card}>
             <ul className={styles.bullets}>
               <li>
-                Masters in Computer Science | Georgia Institute of Technology
-                (September 2023)
+                Masters in Computer Science Specializing in Artificial Intelligence | Georgia Institute of Technology
+                (September 2023 - August 2026)
               </li>
               <li>
                 Bachelors of Technology | SRM Institute of Science and
