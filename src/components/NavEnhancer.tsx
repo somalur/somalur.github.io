@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { animate, inView } from "motion";
 
 export default function NavEnhancer() {
   useEffect(() => {
@@ -8,6 +9,21 @@ export default function NavEnhancer() {
       "(prefers-reduced-motion: reduce)"
     );
     const prefersReducedMotion = () => reducedMotionQuery.matches;
+
+    const animations: ReturnType<typeof animate>[] = [];
+    const stopReveals = inView("main > section", (element) => {
+      if (prefersReducedMotion()) return;
+      animations.push(animate(element, { opacity: [0.9, 1], y: [6, 0] }, { duration: 0.3, ease: "easeOut" }));
+    });
+    const onMotionChange = () => {
+      if (prefersReducedMotion()) animations.forEach(animation => animation.complete());
+    };
+    reducedMotionQuery.addEventListener("change", onMotionChange);
+    const cleanAnimations = () => {
+      stopReveals();
+      animations.forEach(animation => animation.stop());
+      reducedMotionQuery.removeEventListener("change", onMotionChange);
+    };
 
     const navLinks = Array.from(
       document.querySelectorAll<HTMLAnchorElement>("nav a[data-nav]")
@@ -63,6 +79,7 @@ export default function NavEnhancer() {
 
     if (typeof IntersectionObserver === "undefined") {
       return () => {
+        cleanAnimations();
         for (const { a, onClick } of listeners) {
           a.removeEventListener("click", onClick);
         }
@@ -94,6 +111,7 @@ export default function NavEnhancer() {
     }
 
     return () => {
+      cleanAnimations();
       observer.disconnect();
       for (const { a, onClick } of listeners) {
         a.removeEventListener("click", onClick);

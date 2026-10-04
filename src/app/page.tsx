@@ -1,5 +1,6 @@
 import styles from "./page.module.css";
 import NavEnhancer from "../components/NavEnhancer";
+import CareerJourney from "../components/CareerJourney";
 
 export default function Home() {
   return (
@@ -12,13 +13,11 @@ export default function Home() {
       <header className={styles.siteHeader}>
         <div className={styles.container}>
           <div className={styles.brand} aria-label="Site title">
-            <span className={styles.brandMark} aria-hidden="true">
-              SO
-            </span>
             <span className={styles.brandTitle}>Sumeet Omalur</span>
           </div>
 
           <nav className={`${styles.siteNav} ${styles.siteNavDesktop}`} aria-label="Primary">
+            <a className={styles.navLink} href="#journey" data-nav="journey">Journey</a>
             <a className={styles.navLink} href="#skills" data-nav="skills">
               Skills
             </a>
@@ -39,6 +38,7 @@ export default function Home() {
           <details className={styles.navDetails}>
             <summary className={styles.navSummary}>Menu</summary>
             <nav className={styles.siteNav} aria-label="Primary">
+              <a className={styles.navLink} href="#journey" data-nav="journey">Journey</a>
               <a className={styles.navLink} href="#skills" data-nav="skills">
                 Skills
               </a>
@@ -61,18 +61,18 @@ export default function Home() {
 
       <main id="main" className={styles.container}>
         <section className={styles.hero} aria-label="Introduction">
-          <h1>Senior Software Engineer</h1>
+          <p className={styles.heroTopline}>Senior Software Engineer</p>
+          <h1>Sumeet Omalur</h1>
           <p className={styles.heroSubtitle}>
-            Full-stack Engineer focussed in leveraging web and machine learning technologies to help enhance automation and solve problems to provide better experiences to consumers, promote more efficiency in existing processes and subsequently making the world a better place.
+            I work on web applications, data migrations, and software delivery. My experience spans Laravel and AWS, e-commerce experimentation, and applied machine learning.
           </p>
-          <div className={styles.heroBadges} aria-label="Highlights">
-            <span className={styles.badge}>Full Stack Development</span>
-            <span className={styles.badge}>Model Training and Testing</span>
-            <span className={styles.badge}>AWS</span>
-            <span className={styles.badge}>CI/CD</span>
-            <span className={styles.badge}>A/B Testing</span>
+          <div className={styles.heroActions}>
+            <a className={styles.primaryButton} href="#journey">Work history</a>
+            <a className={styles.textButton} href="#projects">Projects</a>
           </div>
         </section>
+
+        <CareerJourney />
 
         <section id="skills" aria-labelledby="skills-title">
           <h2 id="skills-title">Skills</h2>
@@ -155,7 +155,7 @@ export default function Home() {
                 <div>
                   <h3 className={styles.cardTitle}>Block + Tackle</h3>
                   <div className={styles.cardSubtitle}>
-                    July 2026 - Present
+                    July 2026 - Present · Atlanta, United States
                   </div>
                 </div>
               </div>
@@ -166,7 +166,7 @@ export default function Home() {
                 <div>
                   <h3 className={styles.cardTitle}>Tribute Technology</h3>
                   <div className={styles.cardSubtitle}>
-                    September 2020 - June 2026
+                    September 2020 - June 2026 · Boston, United States
                   </div>
                 </div>
               </div>
@@ -233,7 +233,7 @@ export default function Home() {
               <div className={styles.cardTop}>
                 <div>
                   <h3 className={styles.cardTitle}>CodePlex Technology Services</h3>
-                  <div className={styles.cardSubtitle}>June 2019 - June 2019</div>
+                  <div className={styles.cardSubtitle}>June 2019 · Bangalore, India</div>
                 </div>
               </div>
               <ul className={styles.bullets}>
@@ -250,7 +250,7 @@ export default function Home() {
                 <div>
                   <h3 className={styles.cardTitle}>Mindzen Inc</h3>
                   <div className={styles.cardSubtitle}>
-                    December 2018 - December 2018
+                    December 2018 · Chennai, India
                   </div>
                 </div>
               </div>
@@ -268,7 +268,7 @@ export default function Home() {
                 <div>
                   <h3 className={styles.cardTitle}>Rao&apos;s Infosoft Join</h3>
                   <div className={styles.cardSubtitle}>
-                    July 2018 - July 2018
+                    July 2018 · Bangalore, India
                   </div>
                 </div>
               </div>
@@ -383,9 +383,6 @@ export default function Home() {
 
       <footer className={styles.siteFooter}>
         <div className={styles.container}>
-          <small>
-            Last updated: <span id="last-updated">August 8th 2026</span>
-          </small>
         </div>
       </footer>
     </div>
