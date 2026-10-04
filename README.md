@@ -13,18 +13,21 @@ résumé content remains in `src/app/page.tsx`.
 `src/components/CareerGlobe.tsx` renders an orthographic Earth globe using D3 Geo
 and Natural Earth coastline data bundled locally through [world-atlas](https://github.com/topojson/world-atlas).
 Motion rotates the globe between cities, with great-circle routes and hidden-hemisphere
-clipping. No map API key or external map service is required. Select a chapter or use Play flyover/Pause
-tour, and switch between Full globe and a 2× Close-up centered on the selected city.
-Drag the globe to rotate it, or scroll over it to zoom between 1× and 3×. Wheel
-scrolling passes through to the page at the zoom limits. With the globe focused,
-arrow keys rotate, +/− zoom, and Home resets to the selected city at 1×. On touch
-screens, horizontal swipes rotate while vertical swipes preserve page scrolling.
+clipping. `src/components/Aircraft.tsx` provides an original aircraft silhouette that
+travels between locations as visitors scroll through the newest-first career timeline.
+The globe stays beside the current role on desktop and above it on mobile. Location
+links also jump directly to a role. No map API key or external map service is required.
+Full globe and Close-up controls remain available. Drag to rotate; Alt + wheel or
++/− keys zoom. Ordinary wheel scrolling advances the page. Home resets the view.
+On touch screens, horizontal swipes rotate and vertical swipes scroll the page.
 Motion respects the system reduced-motion preference.
+
+The Contact section in `src/app/page.tsx` provides direct email and LinkedIn links.
 
 Motion also handles section reveals in the existing `NavEnhancer` component.
 
 Verification: run lint and the production build, then check the timeline controls,
-flyover play/pause, all five chapters, globe controls, and mobile
+scrolling in both directions, all five roles, globe controls, contact links, and mobile
 navigation in the local preview.
 
 ## Requirements
