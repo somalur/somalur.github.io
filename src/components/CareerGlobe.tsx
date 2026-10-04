@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useId, useRef, useState } from "react";
+import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { animate, motion, useReducedMotion } from "motion/react";
 import { geoDistance, geoGraticule10, geoInterpolate, geoOrthographic, geoPath } from "d3-geo";
 import { feature } from "topojson-client";
 import type { GeometryCollection, Topology } from "topojson-specification";
 import world from "world-atlas/land-110m.json";
 import styles from "../app/page.module.css";
+import Aircraft from "./Aircraft";
 
 type Location = { city: string; lat: number; lon: number };
 type Coordinate = [number, number];
@@ -16,8 +17,9 @@ const grid = geoGraticule10();
 const projectionAt = ([lon, lat]: Coordinate) => geoOrthographic()
   .translate([300, 218]).scale(166).rotate([-lon, -lat]).clipAngle(90).precision(0.5);
 
-export default function CareerGlobe({ destination, cities, origin }: {
+export default function CareerGlobe({ destination, cities, origin, onZoomChange, onLocationSelect }: {
   destination: Location; cities: Location[]; origin: Location;
+  onZoomChange?: (zoom: number) => void; onLocationSelect?: (city: string) => void;
 }) {
   const reduced = useReducedMotion();
   const [zoom, setZoom] = useState(1);
@@ -29,11 +31,12 @@ export default function CareerGlobe({ destination, cities, origin }: {
   const initialProjection = projectionAt([destination.lon, destination.lat]);
   const initialPath = geoPath(initialProjection);
 
-  function changeZoom(value: number) {
+  const changeZoom = useCallback((value: number) => {
     const next = Math.max(1, Math.min(3, value));
     zoomRef.current = next;
     setZoom(next);
-  }
+    onZoomChange?.(next);
+  }, [onZoomChange]);
 
   useEffect(() => {
     const element = svg.current;
@@ -41,12 +44,14 @@ export default function CareerGlobe({ destination, cities, origin }: {
     const landPath = element.querySelector('[data-land]');
     const gridPath = element.querySelector('[data-grid]');
     const routePath = element.querySelector('[data-route]');
+    const aircraft = element.querySelector('[data-aircraft]');
     const markers = element.querySelectorAll<SVGGElement>('[data-city]');
     const destinationCoordinate: Coordinate = [destination.lon, destination.lat];
     const flight = geoInterpolate([origin.lon, origin.lat], destinationCoordinate);
     const rotation = geoInterpolate(camera.current, destinationCoordinate);
     const projection = projectionAt(camera.current);
     const path = geoPath(projection);
+    let flightProgress = 0;
 
     const drawCenter = (center: Coordinate) => {
       camera.current = center;
@@ -62,14 +67,26 @@ export default function CareerGlobe({ destination, cities, origin }: {
         marker.setAttribute('visibility', geoDistance(center, coordinate) < Math.PI / 2 && position ? 'visible' : 'hidden');
         if (position) marker.setAttribute('transform', `translate(${position[0].toFixed(3)},${position[1].toFixed(3)})`);
       });
+      const planeCoordinate = flight(flightProgress);
+      const planePosition = projection(planeCoordinate);
+      const ahead = projection(flight(Math.min(1, flightProgress + 0.01)));
+      const behind = projection(flight(Math.max(0, flightProgress - 0.01)));
+      if (planePosition && ahead && behind) {
+        const heading = Math.atan2(ahead[0] - behind[0], -(ahead[1] - behind[1])) * 180 / Math.PI;
+        aircraft?.setAttribute('transform', `translate(${planePosition[0]},${planePosition[1]}) rotate(${heading})`);
+        aircraft?.setAttribute('visibility', geoDistance(center, planeCoordinate) < Math.PI / 2 ? 'visible' : 'hidden');
+      }
     };
-    const draw = (progress: number) => drawCenter(rotation(progress));
+    const draw = (progress: number) => {
+      flightProgress = Math.min(1, progress * 1.12);
+      drawCenter(rotation(progress));
+    };
     // Start from the current rotation so rapid chapter changes remain smooth.
     const animation = reduced ? undefined : animate(0, 1, { duration: 2.2, ease: [0.22, 1, 0.36, 1], onUpdate: draw });
     if (reduced) draw(1);
     let drag: { id: number; x: number; y: number; center: Coordinate } | null = null;
     const down = (event: PointerEvent) => {
-      if (!event.isPrimary || event.button !== 0) return;
+      if (!event.isPrimary || event.button !== 0 || (event.target as Element).closest('[data-city]')) return;
       animation?.stop();
       element.focus({ preventScroll: true });
       element.setPointerCapture(event.pointerId);
@@ -84,7 +101,9 @@ export default function CareerGlobe({ destination, cities, origin }: {
     };
     const up = () => { drag = null; element.style.cursor = ''; };
     const wheel = (event: WheelEvent) => {
-      if (event.ctrlKey || event.metaKey || !event.deltaY) return;
+      // Normal scrolling advances the career story, even over the globe.
+      // Alt + wheel keeps manual zoom available without trapping page scroll.
+      if (!event.altKey || event.ctrlKey || event.metaKey || !event.deltaY) return;
       const delta = event.deltaY * (event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? 300 : 1);
       const next = Math.max(1, Math.min(3, zoomRef.current - delta * 0.003));
       // At the zoom limits, let the visitor continue scrolling the page.
@@ -120,15 +139,15 @@ export default function CareerGlobe({ destination, cities, origin }: {
       element.removeEventListener('wheel', wheel);
       element.removeEventListener('keydown', key);
     };
-  }, [destination, origin, cities, reduced]);
+  }, [destination, origin, cities, reduced, changeZoom]);
 
   return <>
     <div className={styles.globeZoom} role="group" aria-label="Globe zoom">
       <button type="button" aria-pressed={!zoomed} onClick={() => changeZoom(1)}>Full globe</button>
       <button type="button" aria-pressed={zoomed} onClick={() => changeZoom(2)}>Close-up +</button>
     </div>
-    <svg ref={svg} className={styles.atlas} viewBox="0 0 600 500" role="img" tabIndex={0}
-    aria-label={`Interactive Earth globe. Selected city: ${destination.city}. Drag or use arrow keys to rotate. Scroll or use plus and minus to zoom. Home resets the view.`}>
+    <svg ref={svg} className={styles.atlas} viewBox="0 0 600 500" role="group" tabIndex={0}
+    aria-label={`Career flight to ${destination.city}. Scroll the page to travel between roles. Drag or use arrow keys to rotate. Alt plus scroll, or plus and minus keys, zoom. Home resets the view.`}>
     <defs>
       <clipPath id={`${id}-viewport`}><rect x="0" y="50" width="600" height="342" /></clipPath>
       <radialGradient id={`${id}-ocean`} cx="32%" cy="28%" r="75%"><stop stopColor="#343434" /><stop offset="1" stopColor="#111" /></radialGradient>
@@ -147,13 +166,16 @@ export default function CareerGlobe({ destination, cities, origin }: {
       const coordinate: Coordinate = [city.lon, city.lat];
       const position = initialProjection(coordinate)!;
       const active = city.city === destination.city;
-      return <g key={city.city} data-city transform={`translate(${position[0].toFixed(3)},${position[1].toFixed(3)})`}
+      return <g key={city.city} data-city role="button" tabIndex={0} aria-label={`Select ${city.city} location`} style={{ cursor: 'pointer' }} onClick={() => { onLocationSelect?.(city.city); changeZoom(1); }} onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); event.stopPropagation(); onLocationSelect?.(city.city); changeZoom(1); } }} transform={`translate(${position[0].toFixed(3)},${position[1].toFixed(3)})`}
         visibility={geoDistance([destination.lon, destination.lat], coordinate) < Math.PI / 2 ? 'visible' : 'hidden'}>
         {active && <circle r="9" fill="none" stroke="#fff" strokeOpacity="0.7" />}
+        <circle r="12" fill="transparent" />
+        {(city.city === 'Atlanta' || city.city === 'Chennai') && <rect x="8" y="2" width="6" height="6" fill="white" stroke="#111" strokeWidth="1" />}
         <circle r={active ? 4 : 2.5} fill="#fff" stroke="#111" strokeWidth="1.5" />
         {active && <text x="14" y="-12" fill="white" stroke="#111" strokeWidth="3" paintOrder="stroke" fontFamily="monospace">{city.city.toUpperCase()}</text>}
       </g>;
     })}
+    <Aircraft />
     </motion.g>
     </g>
   </svg></>;

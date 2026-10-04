@@ -1,4 +1,5 @@
 import styles from "./page.module.css";
+import Image from "next/image";
 import NavEnhancer from "../components/NavEnhancer";
 import CareerJourney from "../components/CareerJourney";
 
@@ -13,6 +14,7 @@ export default function Home() {
       <header className={styles.siteHeader}>
         <div className={styles.container}>
           <div className={styles.brand} aria-label="Site title">
+            <Image className={styles.brandPortrait} src="/sumeet-omalur.png" alt="" width={36} height={36} unoptimized />
             <span className={styles.brandTitle}>Sumeet Omalur</span>
           </div>
 
@@ -33,6 +35,7 @@ export default function Home() {
             <a className={styles.navLink} href="#education" data-nav="education">
               Education
             </a>
+          <a className={styles.navLink} href="#contact" data-nav="contact">Contact</a>
           </nav>
 
           <details className={styles.navDetails}>
@@ -54,13 +57,15 @@ export default function Home() {
               <a className={styles.navLink} href="#education" data-nav="education">
                 Education
               </a>
-            </nav>
+            <a className={styles.navLink} href="#contact" data-nav="contact">Contact</a>
+          </nav>
           </details>
         </div>
       </header>
 
       <main id="main" className={styles.container}>
         <section className={styles.hero} aria-label="Introduction">
+          <div>
           <p className={styles.heroTopline}>Senior Software Engineer</p>
           <h1>Sumeet Omalur</h1>
           <p className={styles.heroSubtitle}>
@@ -70,6 +75,8 @@ export default function Home() {
             <a className={styles.primaryButton} href="#journey">Work history</a>
             <a className={styles.textButton} href="#projects">Projects</a>
           </div>
+          </div>
+          <Image className={styles.heroPortrait} src="/sumeet-omalur.png" alt="Sumeet Omalur" width={400} height={400} priority unoptimized />
         </section>
 
         <CareerJourney />
@@ -80,6 +87,7 @@ export default function Home() {
             <div className={styles.skillGroup}>
               <h3>Backend</h3>
               <div className={styles.tags}>
+                <span className={styles.tag}>Django Rest</span>
                 <span className={styles.tag}>LAMP Stack</span>
                 <span className={styles.tag}>Laravel</span>
                 <span className={styles.tag}>CodeIgniter</span>
@@ -97,6 +105,7 @@ export default function Home() {
                 <span className={styles.tag}>PHP</span>
                 <span className={styles.tag}>Python</span>
                 <span className={styles.tag}>JavaScript</span>
+                <span className={styles.tag}>ReactJS</span>
                 <span className={styles.tag}>C</span>
                 <span className={styles.tag}>C++</span>
                 <span className={styles.tag}>Java</span>
@@ -107,7 +116,7 @@ export default function Home() {
               <div className={styles.tags}>
                 <span className={styles.tag}>MySQL</span>
                 <span className={styles.tag}>Tableau</span>
-                <span className={styles.tag}>Postgres</span>
+                <span className={styles.tag}>PostgreSQL</span>
                 <span className={styles.tag}>MongoDB</span>
               </div>
             </div>
@@ -115,6 +124,7 @@ export default function Home() {
               <h3>Cloud / DevOps</h3>
               <div className={styles.tags}>
                 <span className={styles.tag}>Amazon Web Services</span>
+                <span className={styles.tag}>Azure</span>
                 <span className={styles.tag}>Ansible</span>
                  <span className={styles.tag}>Terraform</span>
                 <span className={styles.tag}>GitHub</span>
@@ -133,11 +143,13 @@ export default function Home() {
                 <span className={styles.tag}>Anaconda Navigator</span>
                 <span className={styles.tag}>Jupyter Notebooks</span>
                 <span className={styles.tag}>AWS CloudWatch</span>
+                <span className={styles.tag}>Log Analytics</span>
               </div>
             </div>
             <div className={styles.skillGroup}>
               <h3>Development Processes</h3>
               <div className={styles.tags}>
+                <span className={styles.tag}>ClickUp</span>
                 <span className={styles.tag}>Agile</span>
                 <span className={styles.tag}>Jira</span>
                 <span className={styles.tag}>SDLC</span>
@@ -159,6 +171,11 @@ export default function Home() {
                   </div>
                 </div>
               </div>
+              <ul className={styles.bullets}>
+                <li>Helped maintain the backend and fix bugs in content authoring software for a Fortune 100 hospitality company.</li>
+                <li>Helped implement CI/CD processes for our platforms on Azure using Terraform and Docker.</li>
+                <li>Worked on implementing and supporting Databricks pipelines to chunk, clean, and generate data for our large language models.</li>
+              </ul>
             </article>
 
             <article className={styles.card} role="listitem">
@@ -366,7 +383,7 @@ export default function Home() {
               </li>
               <li>
                 Bachelors of Technology | SRM Institute of Science and
-                Technology (June 2016 - May 2020)
+                Technology — Kattankulathur (June 2016 - May 2020)
               </li>
               <li>
                 High School | Delhi Public School - Bangalore East (June 2015 -
@@ -377,6 +394,21 @@ export default function Home() {
                 - May 2014)
               </li>
             </ul>
+          </div>
+        </section>
+        <section id="contact" className={styles.contact} aria-labelledby="contact-title">
+          <h2 id="contact-title">Contact me</h2>
+          <p>Have a project in mind or want to collaborate on innovative solutions? I would love to hear from you</p>
+          <div className={styles.contactLinks}>
+            <a href="tel:+15082333475" aria-label="Call Sumeet at +1-508-233-3475" title="Call +1-508-233-3475">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.69 2.79a2 2 0 0 1-.45 2.11L8.09 9.89a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.89.33 1.83.56 2.79.69A2 2 0 0 1 22 16.92Z" /></svg>
+            </a>
+            <a href="mailto:sumeet.omalur@gmail.com" aria-label="Email Sumeet" title="Email Sumeet">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/sumeet-omalur/" target="_blank" rel="noopener noreferrer" aria-label="Sumeet on LinkedIn" title="LinkedIn">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 2H3.55C2.69 2 2 2.68 2 3.52v16.96c0 .84.69 1.52 1.55 1.52h16.9c.86 0 1.55-.68 1.55-1.52V3.52c0-.84-.69-1.52-1.55-1.52ZM7.93 18.75H4.98V9.2h2.95v9.55ZM6.45 7.9a1.71 1.71 0 1 1 0-3.42 1.71 1.71 0 0 1 0 3.42Zm12.3 10.85H15.8V14.1c0-1.11-.02-2.54-1.55-2.54-1.55 0-1.79 1.21-1.79 2.46v4.73H9.51V9.2h2.83v1.31h.04c.39-.74 1.36-1.52 2.79-1.52 2.98 0 3.58 1.96 3.58 4.51v5.25Z" /></svg>
+            </a>
           </div>
         </section>
       </main>

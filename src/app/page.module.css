@@ -6,6 +6,7 @@
 .siteHeader .container { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 68px; }
 .brand { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
 .brandTitle { font-size: 14px; font-weight: 600; }
+.brandPortrait { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
 .siteNav { display: flex; gap: 4px; flex-wrap: wrap; }
 .siteNavDesktop { display: flex; }
 .navLink { padding: 8px; font-size: 12px; color: #555; }
@@ -15,7 +16,9 @@
 .page h1 { font-size: clamp(38px, 5vw, 58px); font-weight: 500; line-height: 1.12; margin: 10px 0 22px; letter-spacing: -0.04em; }
 .page h2 { font-size: 28px; font-weight: 500; margin: 0 0 24px; }
 .page h3 { font-size: 19px; font-weight: 500; margin: 0; }
-.hero { padding: 64px 0 44px; border-bottom: 1px solid var(--border); }
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) 260px; align-items: center; gap: 48px; padding: 64px 0 44px; border-bottom: 1px solid var(--border); }
+.heroPortrait { display: block; width: 100%; height: auto; border: 1px solid var(--border); }
+@media (max-width: 760px) { .hero { grid-template-columns: 1fr; gap: 28px; } .heroPortrait { width: 200px; max-width: 100%; } }
 .heroTopline, .eyebrow { font-size: 13px; color: #555; }
 .heroTopline { margin: 0; }
 .heroSubtitle { max-width: 650px; color: var(--muted); font-size: 17px; line-height: 1.8; }
@@ -125,4 +128,40 @@
   .journeyBody { display: block; }
   .chapterPanel { min-height: auto; }
   .card, .skillGroup { break-inside: avoid; }
+}
+
+.flightStops { display: flex; flex-wrap: wrap; gap: 8px 24px; padding: 0 0 22px; border-bottom: 1px solid var(--border); }
+.flightStops a { font-size: 13px; color: #666; padding: 6px 0; border-bottom: 1px solid transparent; }
+.flightStops a[aria-current='step'] { color: #111; border-color: #111; }
+.flightLayout { display: grid; grid-template-columns: 1fr 1.15fr; gap: 44px; align-items: start; padding-top: 28px; }
+.flightVisual { position: sticky; top: 96px; }
+.flightStatus { font-size: 12px; color: #555; margin: 12px 0; }
+.locationLegend { display: flex; gap: 24px; font-size: 12px; margin-top: 14px; }
+.flightChapters { margin: 0; padding: 0 0 0 24px; list-style: none; border-left: 1px solid var(--border); }
+.flightChapter { position: relative; padding: 20px 0 32px; scroll-margin-top: 120px; }
+.flightChapter::before { content: ''; width: 9px; height: 9px; border: 1px solid #aaa; border-radius: 50%; position: absolute; left: -30px; top: 26px; background: #fff; }
+.flightChapter[data-current='true']::before { background: #111; border-color: #111; }
+.contact { border-top: 1px solid var(--border); margin-top: 60px; padding-bottom: 30px; }
+.contact p { color: #555; max-width: 560px; }
+.contactLinks { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 24px; }
+.contactLinks a { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border: 1px solid #999; color: #111; }
+.contactLinks a:hover { background: #111; color: #fff; }
+.contactLinks a:focus-visible { outline: 2px solid #111; outline-offset: 4px; }
+@media (max-width: 760px) {
+  .flightLayout { display: block; padding-top: 16px; }
+  .flightVisual { top: 70px; z-index: 3; background: white; padding-bottom: 8px; }
+  .flightVisual .mapFrame { min-height: 230px; }
+  .flightVisual .mapBottom { margin: auto 16px 32px; }
+  .flightVisual .mapBottom strong { font-size: 20px; }
+  .flightVisual .mapCaption { left: 16px; font-size: 8px; }
+  .flightVisual .globeZoom { top: 8px; right: 8px; }
+  .flightStatus { margin: 6px 0; font-size: 11px; }
+  .flightChapters { margin-top: 16px; }
+  .flightChapter { padding: 20px 0 28px; scroll-margin-top: 360px; }
+  .flightStops { gap: 4px 16px; }
+}
+@media print {
+  .flightVisual, .flightStops { display: none; }
+  .flightLayout { display: block; }
+  .flightChapter { min-height: 0; padding-bottom: 24px; break-inside: avoid; }
 }

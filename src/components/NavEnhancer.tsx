@@ -29,12 +29,12 @@ export default function NavEnhancer() {
       document.querySelectorAll<HTMLAnchorElement>("nav a[data-nav]")
     );
 
-    const sections = navLinks
+    const sections = [...new Set(navLinks
       .map((a) => {
         const id = a.getAttribute("data-nav");
         return id ? document.getElementById(id) : null;
       })
-      .filter((x): x is HTMLElement => Boolean(x));
+      .filter((x): x is HTMLElement => Boolean(x)))];
 
     const clearActive = () => {
       for (const a of navLinks) {
@@ -52,6 +52,7 @@ export default function NavEnhancer() {
       }
     };
 
+    let navigationTarget: string | null = null;
     const listeners = navLinks.map((a) => {
       const onClick = (e: MouseEvent) => {
         const href = a.getAttribute("href") || "";
@@ -60,6 +61,8 @@ export default function NavEnhancer() {
         const id = href.slice(1);
         const target = document.getElementById(id);
         if (!target) return;
+        navigationTarget = id;
+        setActive(id);
 
         const details = a.closest("details");
         if (details && details.hasAttribute("open")) {
@@ -77,42 +80,60 @@ export default function NavEnhancer() {
       return { a, onClick };
     });
 
-    if (typeof IntersectionObserver === "undefined") {
-      return () => {
-        cleanAnimations();
-        for (const { a, onClick } of listeners) {
-          a.removeEventListener("click", onClick);
-        }
-      };
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort(
-            (a, b) =>
-              (b.intersectionRatio || 0) - (a.intersectionRatio || 0)
-          );
-
-        if (visible.length === 0) return;
-        const id = (visible[0].target as HTMLElement).id;
-        if (id) setActive(id);
-      },
-      {
-        root: null,
-        threshold: [0.1, 0.2, 0.35, 0.5],
-        rootMargin: "-20% 0px -70% 0px",
+    let frame = 0;
+    let activeId: string | null = null;
+    const updateActive = () => {
+      frame = 0;
+      // Use section positions rather than intersection ratios: long sections
+      // may never cross a ratio threshold within a narrow observer region.
+      const headerBottom = document.querySelector('header')?.getBoundingClientRect().bottom || 0;
+      const readingLine = Math.max(headerBottom + 60, window.innerHeight * 0.4);
+      let nextId = '';
+      for (const section of sections) {
+        if (section.getBoundingClientRect().top <= readingLine) nextId = section.id;
       }
-    );
-
-    for (const section of sections) {
-      observer.observe(section);
-    }
+      // The final section may be too short to reach the reading line.
+      if (window.scrollY > 0 && window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) {
+        nextId = sections.at(-1)?.id || nextId;
+      }
+      // Short sections near the footer share a clamped scroll destination.
+      // Preserve an explicit navigation choice until the visitor scrolls again.
+      if (navigationTarget) nextId = navigationTarget;
+      if (nextId !== activeId) {
+        activeId = nextId;
+        setActive(nextId);
+      }
+    };
+    const scheduleUpdate = () => {
+      if (!frame) frame = requestAnimationFrame(updateActive);
+    };
+    const resumeScrollTracking = () => { navigationTarget = null; activeId = null; scheduleUpdate(); };
+    const onScrollKey = (event: KeyboardEvent) => {
+      if (['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End', ' '].includes(event.key)) resumeScrollTracking();
+    };
+    window.addEventListener('wheel', resumeScrollTracking, { passive: true });
+    window.addEventListener('touchstart', resumeScrollTracking, { passive: true });
+    window.addEventListener('pointerdown', resumeScrollTracking, { passive: true });
+    window.addEventListener('keydown', onScrollKey);
+    window.addEventListener('scroll', scheduleUpdate, { passive: true });
+    window.addEventListener('resize', scheduleUpdate);
+    window.addEventListener('hashchange', scheduleUpdate);
+    const resizeObserver = new ResizeObserver(scheduleUpdate);
+    const main = document.querySelector('main');
+    if (main) resizeObserver.observe(main);
+    updateActive();
 
     return () => {
       cleanAnimations();
-      observer.disconnect();
+      cancelAnimationFrame(frame);
+      resizeObserver.disconnect();
+      window.removeEventListener('scroll', scheduleUpdate);
+      window.removeEventListener('resize', scheduleUpdate);
+      window.removeEventListener('hashchange', scheduleUpdate);
+      window.removeEventListener('wheel', resumeScrollTracking);
+      window.removeEventListener('touchstart', resumeScrollTracking);
+      window.removeEventListener('pointerdown', resumeScrollTracking);
+      window.removeEventListener('keydown', onScrollKey);
       for (const { a, onClick } of listeners) {
         a.removeEventListener("click", onClick);
       }
