@@ -1,13 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, IBM_Plex_Sans } from "next/font/google";
+import { IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
-
-const heading = Fraunces({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-heading",
-  weight: ["600", "700"],
-});
 
 const body = IBM_Plex_Sans({
   subsets: ["latin"],
@@ -17,7 +10,7 @@ const body = IBM_Plex_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Sumeet's Resume | SDE-III",
+  title: "Sumeet Omalur | Software Engineer",
   description:
     "Full-stack engineer focused on Web Development using PHP, Laravel and AWS, Machine Learning Algorithms with experience in onboarding automation, e-commerce experimentation, CI/CD, and reliable releases.",
   icons: {
@@ -26,7 +19,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0f766e",
+  themeColor: "#ffffff",
 };
 
 export default function RootLayout({
@@ -35,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${heading.variable} ${body.variable}`}>
+    <html lang="en" className={body.variable}>
       <body>{children}</body>
     </html>
   );
