@@ -149,7 +149,7 @@
 .contactLinks a:focus-visible { outline: 2px solid #111; outline-offset: 4px; }
 @media (max-width: 760px) {
   .flightLayout { display: block; padding-top: 16px; }
-  .flightVisual { top: 70px; z-index: 3; background: white; padding-bottom: 8px; }
+  .flightVisual { display: none; }
   .flightVisual .mapFrame { min-height: 230px; }
   .flightVisual .mapBottom { margin: auto 16px 32px; }
   .flightVisual .mapBottom strong { font-size: 20px; }
@@ -157,7 +157,7 @@
   .flightVisual .globeZoom { top: 8px; right: 8px; }
   .flightStatus { margin: 6px 0; font-size: 11px; }
   .flightChapters { margin-top: 16px; }
-  .flightChapter { padding: 20px 0 28px; scroll-margin-top: 360px; }
+  .flightChapter { padding: 20px 0 28px; scroll-margin-top: 120px; }
   .flightStops { gap: 4px 16px; }
 }
 @media print {
